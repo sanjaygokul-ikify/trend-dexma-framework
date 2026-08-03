@@ -1,0 +1,15 @@
+# Docker Compose File
+
+version: '3'
+services:
+  dexma-framework:
+    build: .
+    ports:
+      - '5000:5000'
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+
+  redis:
+    image: redis:alpine
