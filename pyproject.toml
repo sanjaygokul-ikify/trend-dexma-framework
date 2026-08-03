@@ -1,0 +1,17 @@
+# Pyproject File
+
+[build-system]
+requires = ['poetry-core>=1.0.0']
+build-backend = 'poetry.core.masonry.api'
+
+[tool.poetry]
+name = 'dexma-framework'
+version = '1.0.0'
+description = 'A decentralized, open-source framework for building autonomous, multi-agent systems'
+authors = ['Dexma Framework']
+
+[tool.poetry.dependencies]
+python = '^3.9'
+
+[tool.poetry.dev-dependencies]
+test = '^1.0.0'
