@@ -1,0 +1,21 @@
+# Default Configuration
+
+registry:
+  url: 'http://localhost:5000'
+  timeout: 30
+
+services:
+  - name: 'service1'
+    url: 'http://localhost:5001'
+  - name: 'service2'
+    url: 'http://localhost:5002'
+
+storage:
+  url: 'http://localhost:5003'
+  username: 'username'
+  password: 'password'
+
+analytics:
+  url: 'http://localhost:5004'
+  username: 'username'
+  password: 'password'
