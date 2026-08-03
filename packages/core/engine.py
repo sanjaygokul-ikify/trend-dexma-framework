@@ -28,9 +28,13 @@ class DexmaEngine:
         if agent_name not in self.agents:
             self.logger.error(f"Agent {agent_name} not registered")
             raise DexmaEngineException(f"Agent {agent_name} not registered")
-        services = list(self.services.values())
-        self.logger.info(f"Services discovered for agent {agent_name}: {services}")
-        return services
+        try:
+            services = list(self.services.values())
+            self.logger.info(f"Services discovered for agent {agent_name}: {services}")
+            return services
+        except Exception as e:
+            self.logger.error(f"Error discovering services for agent {agent_name}: {str(e)}")
+            raise
 
     async def request_service(self, agent_name: str, service_name: str):
         if agent_name not in self.agents:
@@ -39,9 +43,13 @@ class DexmaEngine:
         if service_name not in self.services:
             self.logger.error(f"Service {service_name} not registered")
             raise DexmaEngineException(f"Service {service_name} not registered")
-        service = self.services[service_name]
-        self.logger.info(f"Service {service_name} requested by agent {agent_name}")
-        return service
+        try:
+            service = self.services[service_name]
+            self.logger.info(f"Service {service_name} requested by agent {agent_name}")
+            return service
+        except Exception as e:
+            self.logger.error(f"Error requesting service {service_name} for agent {agent_name}: {str(e)}")
+            raise
 
     async def start(self):
         self.logger.info("Dexma engine started")
